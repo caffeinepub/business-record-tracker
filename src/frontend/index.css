@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Background & surfaces */
+    --background: 0.98 0.004 220;
+    --foreground: 0.18 0.02 240;
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.02 240;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.02 240;
+
+    /* Primary — teal-blue */
+    --primary: 0.52 0.16 210;
+    --primary-foreground: 0.98 0 0;
+
+    /* Secondary */
+    --secondary: 0.94 0.025 220;
+    --secondary-foreground: 0.28 0.04 220;
+
+    /* Muted */
+    --muted: 0.95 0.01 220;
+    --muted-foreground: 0.55 0.02 230;
+
+    /* Accent — soft teal */
+    --accent: 0.92 0.06 200;
+    --accent-foreground: 0.3 0.1 210;
+
+    /* Destructive */
+    --destructive: 0.58 0.22 28;
+    --destructive-foreground: 0.98 0 0;
+
+    /* Success */
+    --success: 0.55 0.18 155;
+    --success-foreground: 0.98 0 0;
+
+    /* Warning / Amber */
+    --warning: 0.72 0.17 60;
+    --warning-foreground: 0.2 0.04 40;
+
+    /* Borders & inputs */
+    --border: 0.9 0.015 220;
+    --input: 0.9 0.015 220;
+    --ring: 0.52 0.16 210;
+
+    /* Charts */
+    --chart-1: 0.52 0.16 210;
+    --chart-2: 0.55 0.18 155;
+    --chart-3: 0.58 0.22 28;
+    --chart-4: 0.72 0.17 60;
+    --chart-5: 0.6 0.14 280;
+
+    /* Sidebar */
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.18 0.02 240;
+    --sidebar-primary: 0.52 0.16 210;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.92 0.06 200;
+    --sidebar-accent-foreground: 0.3 0.1 210;
+    --sidebar-border: 0.9 0.015 220;
+    --sidebar-ring: 0.52 0.16 210;
+
+    /* BRT-specific tokens */
+    --brt-nav-height: 68px;
+    --brt-header-height: 60px;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", "Figtree", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none;
+  }
+
+  /* Mobile safe areas */
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+@layer utilities {
+  /* Amount colors */
+  .text-positive {
+    color: oklch(0.48 0.18 155);
+  }
+  .text-negative {
+    color: oklch(0.52 0.22 28);
+  }
+  .bg-positive-soft {
+    background-color: oklch(0.96 0.06 155);
+  }
+  .bg-negative-soft {
+    background-color: oklch(0.97 0.05 28);
+  }
+
+  /* Card gradient header */
+  .card-gradient-teal {
+    background: linear-gradient(135deg, oklch(0.52 0.16 210), oklch(0.58 0.15 190));
+  }
+  .card-gradient-green {
+    background: linear-gradient(135deg, oklch(0.50 0.18 155), oklch(0.55 0.16 165));
+  }
+  .card-gradient-red {
+    background: linear-gradient(135deg, oklch(0.55 0.22 28), oklch(0.58 0.20 20));
+  }
+  .card-gradient-amber {
+    background: linear-gradient(135deg, oklch(0.68 0.17 60), oklch(0.72 0.15 50));
+  }
+
+  /* Nav active indicator */
+  .nav-active-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 9999px;
+    background-color: oklch(0.52 0.16 210);
+    margin: 2px auto 0;
+  }
+
+  /* Fab button */
+  .fab-shadow {
+    box-shadow: 0 4px 16px oklch(0.52 0.16 210 / 40%), 0 2px 6px oklch(0.52 0.16 210 / 25%);
+  }
+
+  /* Scrollbar */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Print styles for PDF export */
+  @media print {
+    .no-print { display: none !important; }
+    .print-only { display: block !important; }
+    body { background: white !important; }
+    .print-container { max-width: 100% !important; margin: 0 !important; padding: 20px !important; }
+  }
+}
